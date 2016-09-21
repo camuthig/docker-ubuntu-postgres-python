@@ -8,4 +8,4 @@ RUN apt-get update -qy && \
     postgresql-server-dev-all sudo && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN sed -i '1s/^/local all all md5/' /etc/postgresql/9.5/main/pg_hba.conf
+RUN sed -i '1s/^/local all all peer/' /etc/postgresql/9.5/main/pg_hba.conf
