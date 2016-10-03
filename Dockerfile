@@ -8,4 +8,8 @@ RUN apt-get update -qy && \
     postgresql-server-dev-9.6 sudo && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN sed -i '1s/^/local all all peer/' /etc/postgresql/9.5/main/pg_hba.conf
+RUN sed -i '1s/^/local all all peer/' /etc/postgresql/9.6/main/pg_hba.conf
+
+# unit test DB optimizations
+RUN echo 'fsync = off' >> /etc/postgresql/9.6/main/postgresql.conf && \
+  echo 'full_page_writes = off' >> /etc/postgresql/9.6/main/postgresql.conf
